@@ -5,7 +5,7 @@ generator client {
 datasource db {
   provider  = "postgresql"
   url       = env("POSTGRES_URI")
-  directUrl = env("DIRECT_URL")
+  directUrl = env("DIRECT_URL") // Remove this line if you are not using Supabase for PostgreSQL
 }
 
 model User {
@@ -21,8 +21,8 @@ model Order {
   id             Int         @id @default(autoincrement())
   userId         String
   createdAt      DateTime    @default(now())
-  recipientName  String  // Name of the person to receive the order
-  recipientPhone String  // Phone number of the person to receive the order
+  recipientName  String // Name of the person to receive the order
+  recipientPhone String // Phone number of the person to receive the order
   user           User        @relation(fields: [userId], references: [id])
   orderItems     OrderItem[]
 }

@@ -34,8 +34,9 @@ This project is a food ordering platform, supporting menu management and order p
 
 3. **Configure environment variables:**
    - Copy `.env.example` to `.env` and fill in your MongoDB and PostgreSQL connection strings.
-   - Fill in your Clerk publishable key and secret key, you can use development keys. You can get it from Clerk dashboard for free [here](https://clerk.com/).
-   - Fill in your direct connection string for PostgreSQL. This is used for migrations. I have used Supabase for PostgreSQL because neon.tech is going down from time to time.
+   - Fill in your Clerk publishable key and secret key, you can use development keys.Since, this is a long process, I have given my development keys in the .env.example file, you can use them for testing. Otherwise, you can get it from Clerk dashboard for free [here](https://clerk.com/).
+   - If you are not using Supabase for PostgreSQL, remove the `DIRECT_URL` line (line 8) from the schema.prisma file.
+   - Otherwise, fill in your direct connection string for PostgreSQL, you can get it from Supabase dashboard [here](https://app.supabase.com/). This is used for migrations. I have used Supabase for PostgreSQL because neon.tech is going down from time to time.
 
 4. **Set up the databases:**
    - Ensure MongoDB and PostgreSQL are running.
