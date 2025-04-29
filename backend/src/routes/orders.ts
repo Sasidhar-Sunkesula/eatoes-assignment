@@ -7,7 +7,7 @@ import { createOrderSchema } from "../zod";
 const router = Router();
 
 // Get all orders
-router.get("/orders", ensureUser, async (req, res) => {
+router.get("/orders", ensureUser, async (req: Request, res: Response) => {
   try {
     const orders = await prisma.order.findMany({
       where: {
@@ -21,6 +21,7 @@ router.get("/orders", ensureUser, async (req, res) => {
             menuItemId: true,
             name: true,
             price: true,
+            quantity: true,
           },
         },
       },
@@ -35,44 +36,8 @@ router.get("/orders", ensureUser, async (req, res) => {
   }
 });
 
-// Get order by id
-router.get("/orders/:id", async (req, res) => {
-  if (!req.auth.userId) {
-    res.status(401).json({ error: "Unauthorized" });
-    return;
-  }
-  const id = req.params.id;
-  try {
-    const order = await prisma.order.findUnique({
-      where: {
-        id: Number(id),
-        userId: req.auth.userId,
-      },
-      select: {
-        id: true,
-        createdAt: true,
-        orderItems: {
-          select: {
-            menuItemId: true,
-            name: true,
-            price: true,
-          },
-        },
-      },
-    });
-    if (!order) {
-      res.status(404).json({ error: "Order not found" });
-      return;
-    }
-    res.status(200).json({ order });
-  } catch (error) {
-    console.log("Error fetching order:", error);
-    res.status(500).json({ error: "Unable to fetch order" });
-  }
-});
-
 // Create a new order (receiving cart data and user info).
-router.post("/orders", ensureUser, async (req, res) => {
+router.post("/orders", ensureUser, async (req: Request, res: Response) => {
   if (!req.auth.userId) {
     res.status(401).json({ error: "Unauthorized" });
     return;
@@ -104,7 +69,11 @@ router.post("/orders", ensureUser, async (req, res) => {
             data: menuItemsFromDB.map((menuItem) => ({
               menuItemId: menuItem.id,
               name: menuItem.name,
+              // Unit price of the item
               price: menuItem.price,
+              quantity:
+                menuItems.find((i) => i.menuItemId === menuItem.id)?.quantity ||
+                1,
             })),
           },
         },

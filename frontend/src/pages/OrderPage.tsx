@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useHandleOrder } from "@/hooks/useHandleOrder";
 import { useCartStore } from "@/store/cartStore";
 import { useState } from "react";
 import { useShallow } from "zustand/react/shallow";
-import { useHandleOrder } from "@/hooks/useHandleOrder";
 
 export default function OrderPage() {
   const items = useCartStore(useShallow((state) => state.items));
@@ -32,6 +32,7 @@ export default function OrderPage() {
         <Input
           placeholder="9876543210"
           value={phone}
+          // Only set phone if it's a valid number
           onChange={(e) => {
             if (!isNaN(Number(e.target.value))) {
               setPhone(e.target.value);
@@ -45,7 +46,7 @@ export default function OrderPage() {
       </form>
       <div className="mt-6">
         <h2 className="font-semibold mb-2">Order Summary</h2>
-        <ul>
+        <ul className="text-sm mb-2 space-y-1">
           {items.map((item) => (
             <li key={item._id}>
               {item.name} x {item.quantity} — ₹

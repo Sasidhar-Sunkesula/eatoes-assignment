@@ -1,11 +1,11 @@
-import { Router, Request, Response } from "express";
+import { Request, Response, Router } from "express";
 import { MenuItem } from "../db/mongoose/menuItem.model";
 import { createMenuItemSchema, updateMenuItemSchema } from "../zod";
 
 const router = Router();
 
 // Get all menu items
-router.get("/menu", async (req, res) => {
+router.get("/menu", async (req: Request, res: Response) => {
   try {
     const menuItems = await MenuItem.find({});
     res.status(200).json({ menuItems });
@@ -15,24 +15,8 @@ router.get("/menu", async (req, res) => {
   }
 });
 
-// Get a menu item by id
-router.get("/menu/:id", async (req, res) => {
-  const id = req.params.id;
-  try {
-    const menuItem = await MenuItem.findById(id);
-    if (!menuItem) {
-      res.status(404).json({ error: "Menu item not found" });
-      return;
-    }
-    res.status(200).json({ menuItem });
-  } catch (error) {
-    console.log("Error fetching menu item:", error);
-    res.status(500).json({ error: "Unable to fetch menu item" });
-  }
-});
-
 // Create a new menu item
-router.post("/menu", async (req, res) => {
+router.post("/menu", async (req: Request, res: Response) => {
   const validation = createMenuItemSchema.safeParse(req.body);
   if (!validation.success) {
     res.status(400).json({ error: validation.error.message });
@@ -56,7 +40,7 @@ router.post("/menu", async (req, res) => {
 });
 
 // Update a menu item partially by id
-router.patch("/menu/:id", async (req, res) => {
+router.patch("/menu/:id", async (req: Request, res: Response) => {
   const id = req.params.id;
   const validation = updateMenuItemSchema.safeParse(req.body);
   if (!validation.success) {
@@ -88,7 +72,7 @@ router.patch("/menu/:id", async (req, res) => {
 });
 
 // Delete a menu item by id
-router.delete("/menu/:id", async (req, res) => {
+router.delete("/menu/:id", async (req: Request, res: Response) => {
   const id = req.params.id;
   try {
     const menuItem = await MenuItem.findByIdAndDelete(id);
