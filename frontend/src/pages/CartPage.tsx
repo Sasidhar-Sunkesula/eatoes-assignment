@@ -25,7 +25,7 @@ export default function CartPage() {
         <>
           <ul className="divide-y">
             {items.map((item) => (
-              <li key={item.id} className="flex items-center gap-4 py-4">
+              <li key={item._id} className="flex items-center gap-4 py-4">
                 {item.imageUrl && (
                   <img
                     src={item.imageUrl}
@@ -42,7 +42,7 @@ export default function CartPage() {
                     <Button
                       size="icon"
                       onClick={() =>
-                        updateQuantity(item.id, Math.max(1, item.quantity - 1))
+                        updateQuantity(item._id, Math.max(1, item.quantity - 1))
                       }
                     >
                       -
@@ -50,7 +50,9 @@ export default function CartPage() {
                     <span className="px-2">{item.quantity}</span>
                     <Button
                       size="icon"
-                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                      onClick={() =>
+                        updateQuantity(item._id, item.quantity + 1)
+                      }
                     >
                       +
                     </Button>
@@ -59,7 +61,7 @@ export default function CartPage() {
                 <Button
                   variant="destructive"
                   onClick={() => {
-                    removeItem(item.id);
+                    removeItem(item._id);
                     toast.success("Item removed from cart");
                   }}
                 >

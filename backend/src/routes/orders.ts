@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router, Request, Response } from "express";
 import { MenuItem } from "../db/mongoose/menuItem.model";
 import { prisma } from "../db/prisma";
 import { ensureUser } from "../middleware/ensureUser";
@@ -83,11 +83,11 @@ router.post("/orders", ensureUser, async (req, res) => {
     res.status(400).json({ error: validation.error.message });
     return;
   }
-  const { menuItems } = validation.data;
+  const { menuItems, recipientName, recipientPhone } = validation.data;
   try {
     // Fetch the info of items from the mongoDB
     const menuItemsFromDB = await MenuItem.find({
-      _id: { $in: menuItems },
+      _id: { $in: menuItems.map((i) => i.menuItemId) },
     });
     if (menuItemsFromDB.length !== menuItems.length) {
       res.status(404).json({ error: "One or more menu items not found" });
@@ -97,6 +97,8 @@ router.post("/orders", ensureUser, async (req, res) => {
     const order = await prisma.order.create({
       data: {
         userId: req.auth.userId,
+        recipientName,
+        recipientPhone,
         orderItems: {
           createMany: {
             data: menuItemsFromDB.map((menuItem) => ({

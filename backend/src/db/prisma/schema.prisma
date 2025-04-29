@@ -3,8 +3,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("POSTGRES_URI")
+  provider  = "postgresql"
+  url       = env("POSTGRES_URI")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
@@ -17,11 +18,13 @@ model User {
 }
 
 model Order {
-  id         Int         @id @default(autoincrement())
-  userId     String
-  createdAt  DateTime    @default(now())
-  user       User        @relation(fields: [userId], references: [id])
-  orderItems OrderItem[]
+  id             Int         @id @default(autoincrement())
+  userId         String
+  createdAt      DateTime    @default(now())
+  recipientName  String  // Name of the person to receive the order
+  recipientPhone String  // Phone number of the person to receive the order
+  user           User        @relation(fields: [userId], references: [id])
+  orderItems     OrderItem[]
 }
 
 model OrderItem {

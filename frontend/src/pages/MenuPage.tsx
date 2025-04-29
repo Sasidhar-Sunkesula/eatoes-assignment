@@ -8,19 +8,11 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { API_URL } from "@/lib/constants";
 import { useCartStore } from "@/store/cartStore";
+import { MenuItem } from "@/types/menu";
 import axios from "axios";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useShallow } from "zustand/react/shallow";
-
-type MenuItem = {
-  _id: string;
-  name: string;
-  description: string;
-  category: string;
-  price: number;
-  imageUrl?: string;
-};
 
 type MenuByCategory = {
   [category: string]: MenuItem[];
@@ -110,7 +102,7 @@ export default function MenuPage() {
                     <Button
                       onClick={() => {
                         addItem({
-                          id: item._id,
+                          _id: item._id,
                           name: item.name,
                           price: item.price,
                           imageUrl: item.imageUrl,

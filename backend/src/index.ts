@@ -25,7 +25,7 @@ app.use("/api", ordersRouter);
 app.listen(PORT, async () => {
   try {
     await connectMongoDB(process.env.MONGODB_URI!);
-    console.log("Server is running on port ", PORT);
+    console.log("Server is running on port", PORT);
   } catch (error) {
     console.error("Server startup error:", error);
     process.exit(1);

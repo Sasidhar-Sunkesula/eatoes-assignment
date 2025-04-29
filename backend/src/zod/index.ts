@@ -17,5 +17,12 @@ export const updateMenuItemSchema = z.object({
 });
 
 export const createOrderSchema = z.object({
-  menuItems: z.array(z.string()),
+  menuItems: z.array(
+    z.object({
+      menuItemId: z.string(),
+      quantity: z.number().min(1),
+    })
+  ),
+  recipientName: z.string(),
+  recipientPhone: z.string().length(10),
 });
