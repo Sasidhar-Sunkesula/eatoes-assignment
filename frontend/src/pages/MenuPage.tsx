@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -6,9 +7,11 @@ import {
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { API_URL } from "@/lib/constants";
+import { useCartStore } from "@/store/cartStore";
 import axios from "axios";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "react-hot-toast";
+import { useShallow } from "zustand/react/shallow";
 
 type MenuItem = {
   _id: string;
@@ -27,12 +30,13 @@ export default function MenuPage() {
   const [menu, setMenu] = useState<MenuItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const addItem = useCartStore(useShallow((state) => state.addItem));
 
   useEffect(() => {
     setLoading(true);
     axios
       .get(`${API_URL}/api/menu`)
-      .then((res) => setMenu(res.data.menu || []))
+      .then((res) => setMenu(res.data.menuItems || []))
       .catch(() => {
         setError("Failed to load menu.");
         toast.error("Failed to load menu.");
@@ -103,7 +107,21 @@ export default function MenuPage() {
                     <span className="font-semibold text-primary text-lg">
                       ₹{item.price.toFixed(2)}
                     </span>
-                    {/* Add to Cart button will go here in next step */}
+                    <Button
+                      onClick={() => {
+                        addItem({
+                          id: item._id,
+                          name: item.name,
+                          price: item.price,
+                          imageUrl: item.imageUrl,
+                        });
+                        toast.success("Item added to cart");
+                      }}
+                      variant="outline"
+                      size="sm"
+                    >
+                      Add to Cart
+                    </Button>
                   </div>
                 </CardContent>
               </Card>

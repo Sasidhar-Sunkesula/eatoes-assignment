@@ -1,0 +1,107 @@
+[
+    {
+        "name": "Paneer Tikka Pizza",
+        "description": "Spicy paneer, onions, and peppers on a cheesy pizza.",
+        "category": "Main Course",
+        "price": 349,
+        "imageUrl": "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg"
+    },
+    {
+        "name": "Dal Makhani",
+        "description": "Slow-cooked black lentils in a buttery sauce.",
+        "category": "Main Course",
+        "price": 179,
+        "imageUrl": "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg"
+    },
+    {
+        "name": "Hakka Noodles",
+        "description": "Stir-fried noodles with vegetables.",
+        "category": "Main Course",
+        "price": 159,
+        "imageUrl": "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg"
+    },
+    {
+        "name": "Tandoori Roti",
+        "description": "Whole wheat bread cooked in a tandoor.",
+        "category": "Breads",
+        "price": 30,
+        "imageUrl": "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg"
+    },
+    {
+        "name": "Garlic Naan",
+        "description": "Soft naan bread topped with garlic and coriander.",
+        "category": "Breads",
+        "price": 45,
+        "imageUrl": "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg"
+    },
+    {
+        "name": "Spring Rolls",
+        "description": "Crispy rolls stuffed with vegetables.",
+        "category": "Appetizers",
+        "price": 119,
+        "imageUrl": "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg"
+    },
+    {
+        "name": "Chicken Wings",
+        "description": "Spicy and crispy chicken wings.",
+        "category": "Appetizers",
+        "price": 159,
+        "imageUrl": "https://images.pexels.com/photos/1639566/pexels-photo-1639566.jpeg"
+    },
+    {
+        "name": "Caesar Salad",
+        "description": "Romaine lettuce, croutons, parmesan, and Caesar dressing.",
+        "category": "Salads",
+        "price": 149,
+        "imageUrl": "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg"
+    },
+    {
+        "name": "Greek Salad",
+        "description": "Fresh veggies, feta cheese, and olives.",
+        "category": "Salads",
+        "price": 139,
+        "imageUrl": "https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg"
+    },
+    {
+        "name": "Gulab Jamun",
+        "description": "Soft milk-solid balls soaked in sugar syrup.",
+        "category": "Desserts",
+        "price": 79,
+        "imageUrl": "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg"
+    },
+    {
+        "name": "Chocolate Brownie",
+        "description": "Rich and fudgy chocolate brownie.",
+        "category": "Desserts",
+        "price": 99,
+        "imageUrl": "https://images.pexels.com/photos/230325/pexels-photo-230325.jpeg"
+    },
+    {
+        "name": "Veg Manchurian",
+        "description": "Fried veggie balls in tangy sauce.",
+        "category": "Starters",
+        "price": 129,
+        "imageUrl": "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg"
+    },
+    {
+        "name": "Mango Lassi",
+        "description": "Sweet mango yogurt drink.",
+        "category": "Beverages",
+        "price": 70,
+        "imageUrl": "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg"
+    },
+    {
+        "name": "Masala Chai",
+        "description": "Spiced Indian tea with milk.",
+        "category": "Beverages",
+        "price": 40,
+        "imageUrl": "https://images.pexels.com/photos/461382/pexels-photo-461382.jpeg"
+    },
+    {
+        "name": "Cold Coffee",
+        "description": "Chilled coffee with ice cream.",
+        "category": "Beverages",
+        "price": 90,
+        "imageUrl": "https://images.pexels.com/photos/1417945/pexels-photo-1417945.jpeg"
+    }
+]
