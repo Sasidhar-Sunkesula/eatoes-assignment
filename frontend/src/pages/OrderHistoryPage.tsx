@@ -48,7 +48,7 @@ export default function OrderHistoryPage() {
   }
 
   return (
-    <div className="w-full h-full flex flex-col items-center">
+    <div className="w-full h-full flex flex-col items-center py-8">
       <h1 className="text-2xl font-bold mb-4">Order History</h1>
       {orders.length > 0 ? (
         sortedByRecent.map((order) => (

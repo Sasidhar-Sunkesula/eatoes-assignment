@@ -2,6 +2,7 @@ import { clerkClient } from "@clerk/express";
 import { NextFunction, Request, Response } from "express";
 import { prisma } from "../db/prisma";
 
+// Middleware to ensure user is added to our db since Clerk doesn't store user data in our db
 export async function ensureUser(
   req: Request,
   res: Response,

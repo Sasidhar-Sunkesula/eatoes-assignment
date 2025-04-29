@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+// Schema for creating a menu item
 export const createMenuItemSchema = z.object({
   name: z.string(),
   description: z.string(),
@@ -8,6 +9,7 @@ export const createMenuItemSchema = z.object({
   imageUrl: z.string().optional(),
 });
 
+// Schema for updating a menu item
 export const updateMenuItemSchema = z.object({
   name: z.string().optional(),
   description: z.string().optional(),
@@ -16,6 +18,7 @@ export const updateMenuItemSchema = z.object({
   imageUrl: z.string().optional(),
 });
 
+// Schema for creating an order
 export const createOrderSchema = z.object({
   menuItems: z.array(
     z.object({

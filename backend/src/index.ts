@@ -22,6 +22,7 @@ app.use(
 app.use("/api", menuRouter);
 app.use("/api", ordersRouter);
 
+// Start the server only after connecting to MongoDB
 app.listen(PORT, async () => {
   try {
     await connectMongoDB(process.env.MONGODB_URI!);

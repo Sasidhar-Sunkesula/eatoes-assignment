@@ -21,6 +21,17 @@ export function MainLayout() {
         <Link to="/" className="font-bold text-xl">
           Digital Diner
         </Link>
+        <nav className="flex items-center gap-6 text-sm mr-4">
+          <Link to="/history" className="hover:underline">
+            Orders
+          </Link>
+          <Link
+            to="/admin"
+            className="hover:underline font-semibold"
+          >
+            Admin
+          </Link>
+        </nav>
         <div className="flex items-center gap-x-4">
           <Link to="/cart" className="relative">
             <BaggageClaim className="text-gray-600 dark:text-gray-300" />
